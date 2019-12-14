@@ -96,17 +96,60 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
 
 
-if __name__ == "__main__":
-    # Test our your implementation from the command line
-    # with `python robot_sort.py`
+        self.swap_item()
+        self.move_right()
+        while self.can_move_right():
+            print(f'Move?: {self.can_move_right()}. Position: {self._position}. Item:{self._item}')
+            if self.compare_item() > 0:
+                self.move_right()
+            elif self.compare_item() < 0:
+                self.swap_item()
+                print(self._list)
+                print(f'New Item: {self._item}')
+                self.move_right()
 
-    l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
+        self.swap_item()
 
-    robot = SortingRobot(l)
+        while self.can_move_left():
+            self.move_left()
 
-    robot.sort()
-    print(robot._list)
+        
+        print(self._item)
+        print(f'list: {self._list}')
+        
+        return self._list
+
+    # Immitate bubble sort
+
+    # while not sorted
+    # swap none item with item at list[1]
+    # move right
+    # while robot can move right
+        #compare robot item to list[+1]
+        #if compare > 0 (robot item greater than list[1+])
+            #move right
+        #if compare < 0 (robot item less than list[1+])
+            #swap item
+            #move right
+    # swap current item, now largest, with last item
+
+    # while robot can move left
+        # continue to move left, should reach position 0 again
+
+    # repeat steps
+
+# print(SortingRobot([6, 5, 4, 1, 2, 3]).sort())
+print(SortingRobot([7, 6, 5, 4, 3, 2, 1]).sort())
+
+# if __name__ == "__main__":
+#     # Test our your implementation from the command line
+#     # with `python robot_sort.py`
+
+#     l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
+
+#     robot = SortingRobot(l)
+
+#     robot.sort()
+#     print(robot._list)
